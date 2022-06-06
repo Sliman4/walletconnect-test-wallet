@@ -15,7 +15,7 @@ importScripts("/walletconnect-test-wallet/workbox-v3.6.3/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "/walletconnect-test-wallet/workbox-v3.6.3"});
 
 importScripts(
-  "/walletconnect-test-wallet/precache-manifest.1317a43419ec25381a6c88f55fcf2af7.js"
+  "/walletconnect-test-wallet/precache-manifest.4a315164da849b52d57a900955ee3aea.js"
 );
 
 workbox.clientsClaim();
