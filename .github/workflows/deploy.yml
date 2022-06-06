@@ -27,10 +27,4 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run lint
-      - run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/diamondverse' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+      - run: npm run deploy
