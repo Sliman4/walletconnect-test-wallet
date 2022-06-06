@@ -12,7 +12,7 @@ import RequestButton from "./components/RequestButton";
 import AccountDetails from "./components/AccountDetails";
 import QRCodeScanner, { IQRCodeValidateResponse } from "./components/QRCodeScanner";
 import { DEFAULT_CHAIN_ID, DEFAULT_ACTIVE_INDEX } from "./constants/default";
-import { getCachedSession } from "./helpers/utilities";
+import { getCachedSession, methodToName } from "./helpers/utilities";
 import { getAppControllers } from "./controllers";
 import { getAppConfig } from "./config";
 
@@ -534,16 +534,16 @@ class App extends React.Component<{}> {
                       </SConnectedPeer>
                     </>
                   )}
-                  <h6>{"Входящие запросы транзакций:"}</h6>
+                  <h6>{"Входящие запросы:"}</h6>
                   {requests.length ? (
                     requests.map(request => (
                       <SRequestButton key={request.id} onClick={() => this.openRequest(request)}>
-                        <div>{request.method}</div>
+                        <div>{methodToName(request.method)}</div>
                       </SRequestButton>
                     ))
                   ) : (
                     <div>
-                      <div>{"Нет запросов транзакций"}</div>
+                      <div>{"Нет запросов"}</div>
                     </div>
                   )}
                 </Column>

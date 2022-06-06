@@ -18,6 +18,7 @@ export interface IChainData {
   network_id: number;
   rpc_url: string;
   native_currency: IAssetData;
+  faucet_url?: string;
 }
 
 export interface ITxData {

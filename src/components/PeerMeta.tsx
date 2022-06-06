@@ -21,7 +21,7 @@ interface IPeerMetaProps {
 
 const PeerMeta = (props: IPeerMetaProps) => (
   <>
-    <SIcon src={props.peerMeta.icons[0]} alt={props.peerMeta.name} />
+    <SIcon src={props.peerMeta.icons[0]} />
     <SName>{props.peerMeta.name}</SName>
     <SCenter>{props.peerMeta.description}</SCenter>
     <SCenter>{props.peerMeta.url}</SCenter>

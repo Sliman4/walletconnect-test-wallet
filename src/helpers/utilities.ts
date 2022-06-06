@@ -210,3 +210,20 @@ export function getCachedSession(): any {
   }
   return session;
 }
+
+export function methodToName(method: string): string {
+  switch (method) {
+    case "eth_sendTransaction":
+      return "Отправить транзакцию";
+    case "eth_signTransaction":
+      return "Подписать транзакцию";
+    case "eth_sign":
+      return "Подписать";
+    case "personal_sign":
+      return "Подписать";
+    case "eth_signTypedData":
+      return "Подписать";
+    default:
+      return "Неизвестно";
+  }
+}

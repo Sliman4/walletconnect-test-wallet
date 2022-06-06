@@ -16,6 +16,7 @@ export const SUPPORTED_CHAINS: IChainData[] = [
       contractAddress: "",
       balance: "",
     },
+    faucet_url: "https://faucet.polygon.technology/",
   },
   {
     name: "Local Testnet (разработка)",

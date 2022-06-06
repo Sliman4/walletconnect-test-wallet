@@ -28,7 +28,6 @@ export const SRow = styled.div<IDropdownStyle>`
   transition: ${transitions.base};
   width: 100%;
   padding: 10px 20px;
-  //background: rgb(${colors.white});
   border-radius: ${({ selected, show }) => (selected ? (show ? "6px 6px 0 0 " : "6px") : "none")};
   border-bottom-width: 1px;
   border-bottom-style: solid;

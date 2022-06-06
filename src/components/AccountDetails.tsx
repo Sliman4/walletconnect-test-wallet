@@ -53,7 +53,7 @@ const AccountDetails = (props: IAccountDetailsProps) => {
     display_address: ellipseAddress(addr, ellipseLength),
   }));
   const copyAddressToClipboard = () => {
-      navigator.clipboard.writeText(address)
+    navigator.clipboard.writeText(address);
   };
   return (
     <React.Fragment>
@@ -63,10 +63,19 @@ const AccountDetails = (props: IAccountDetailsProps) => {
           <SBlockie size={40} address={address} />
           <SAddressButton onClick={copyAddressToClipboard}>
             <SRow>
-              <svg style={{float: "right", marginTop: "calc((16px - 24px) / 2)"}} stroke="currentColor"
-                   fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="24px" width="24px">
-                <path d="M16,1 H4 c-1.1,0,-2,.9,-2,2 v14 h2 V3 h12 V1 z m3,4 H8 c-1.1,0,-2,.9,-2,2 v14
-                 c0,1.1,.9,2,2,2 h11 c1.1,0,2,-.9,2,-2 V7 c0,-1.1,-.9,-2,-2,-2 z m0,16 H8 V7 h11 v14 z"/>
+              <svg
+                style={{ float: "right", marginTop: "calc((16px - 24px) / 2)" }}
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="24px"
+                width="24px"
+              >
+                <path
+                  d="M16,1 H4 c-1.1,0,-2,.9,-2,2 v14 h2 V3 h12 V1 z m3,4 H8 c-1.1,0,-2,.9,-2,2 v14
+                 c0,1.1,.9,2,2,2 h11 c1.1,0,2,-.9,2,-2 V7 c0,-1.1,-.9,-2,-2,-2 z m0,16 H8 V7 h11 v14 z"
+                />
               </svg>
               {accountsMap[activeIndex].display_address}
             </SRow>
