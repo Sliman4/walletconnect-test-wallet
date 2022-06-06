@@ -568,7 +568,7 @@ class App extends React.Component<{}> {
           )}
         </SContainer>
         {getAppConfig().styleOpts.showVersion && (
-          <SVersionNumber>{`v${process.env.REACT_APP_VERSION}`} </SVersionNumber>
+          <SVersionNumber>{`v${process.env.REACT_APP_VERSION ?? "LOCAL"}`} </SVersionNumber>
         )}
       </React.Fragment>
     );
