@@ -1,30 +1,26 @@
 # walletconnect-test-wallet
 
-Test Wallet (Web)
+Тестовый [веб-кошелек](https://diamondverse.github.io/walletconnect-test-wallet)
+немного упрощен и улучшен для целей The Diamondverse.
 
-## Setup INFURA project id
+Если во время использования вы закрывали браузер и вышли
+из игры, кошелек может не отключиться автоматически, для
+этого нажмите на кнопку "Отключить" в правом верхнем углу.
 
-An INFURA project id is required to run this project. [Signup for a free INFURA project id here](https://infura.io/product/ethereum).
-
-Once you have the project id, setup the environment variable in file `.env.local` as follow.
-
-```
-REACT_APP_INFURA_PROJECT_ID=<your infura project id>
-```
-
-## Develop
+Для разработки нужно клонировать и запустить эту команду,
+чтобы можно было подключиться к `localhost`:
 
 ```bash
 npm run start
 ```
 
-## Test
+## Запуск тестов
 
 ```bash
 npm run test
 ```
 
-## Build
+## Релиз
 
 ```bash
 npm run build

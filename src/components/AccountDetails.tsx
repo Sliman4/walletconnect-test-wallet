@@ -48,7 +48,7 @@ const AccountDetails = (props: IAccountDetailsProps) => {
   return (
     <React.Fragment>
       <SSection>
-        <h6>{"Account"}</h6>
+        <h6>{"Аккаунт"}</h6>
         <SAddressDropdownWrapper>
           <SBlockie size={40} address={address} />
           <Dropdown
@@ -62,7 +62,7 @@ const AccountDetails = (props: IAccountDetailsProps) => {
         </SAddressDropdownWrapper>
       </SSection>
       <SSection>
-        <h6>{"Network"}</h6>
+        <h6>{"Сеть"}</h6>
         <Dropdown
           selected={chainId}
           options={chains}

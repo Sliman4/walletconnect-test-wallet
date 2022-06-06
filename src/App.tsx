@@ -78,12 +78,12 @@ const SActionsColumn = styled(SActions as any)`
 `;
 
 const SButton = styled(Button)`
-  width: 50%;
+  width: 40%;
   height: 40px;
 `;
 
 const SInput = styled(Input)`
-  width: 50%;
+  width: 60%;
   margin: 10px;
   font-size: 14px;
   height: 40px;
@@ -488,8 +488,8 @@ class App extends React.Component<{}> {
                   <Column>
                     <PeerMeta peerMeta={peerMeta} />
                     <SActions>
-                      <Button onClick={this.approveSession}>{`Approve`}</Button>
-                      <Button onClick={this.rejectSession}>{`Reject`}</Button>
+                      <Button onClick={this.approveSession}>{`Подтвердить`}</Button>
+                      <Button onClick={this.rejectSession}>{`Отклонить`}</Button>
                     </SActions>
                   </Column>
                 ) : (
@@ -504,11 +504,11 @@ class App extends React.Component<{}> {
                       updateChain={this.updateChain}
                     />
                     <SActionsColumn>
-                      <SButton onClick={this.toggleScanner}>{`Scan`}</SButton>
+                      <SButton onClick={this.toggleScanner}>{`QR-код`}</SButton>
                       {getAppConfig().styleOpts.showPasteUri && (
                         <>
-                          <p>{"OR"}</p>
-                          <SInput onChange={this.onURIPaste} placeholder={"Paste wc: uri"} />
+                          <p>{"или"}</p>
+                          <SInput onChange={this.onURIPaste} placeholder={"Вставьте ссылку"} />
                         </>
                       )}
                     </SActionsColumn>
@@ -527,14 +527,14 @@ class App extends React.Component<{}> {
                   />
                   {peerMeta && peerMeta.name && (
                     <>
-                      <h6>{"Connected to"}</h6>
+                      <h6>{"Подключено к"}</h6>
                       <SConnectedPeer>
                         <img src={peerMeta.icons[0]} alt={peerMeta.name} />
                         <div>{peerMeta.name}</div>
                       </SConnectedPeer>
                     </>
                   )}
-                  <h6>{"Pending Call Requests"}</h6>
+                  <h6>{"Входящие запросы транзакций:"}</h6>
                   {requests.length ? (
                     requests.map(request => (
                       <SRequestButton key={request.id} onClick={() => this.openRequest(request)}>
@@ -543,7 +543,7 @@ class App extends React.Component<{}> {
                     ))
                   ) : (
                     <div>
-                      <div>{"No pending requests"}</div>
+                      <div>{"Нет запросов транзакций"}</div>
                     </div>
                   )}
                 </Column>

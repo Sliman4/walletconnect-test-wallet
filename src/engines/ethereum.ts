@@ -42,17 +42,17 @@ export async function routeEthereumRequests(payload: any, state: IAppState, setS
 }
 
 export function renderEthereumRequests(payload: any): IRequestRenderParams[] {
-  let params = [{ label: "Method", value: payload.method }];
+  let params = [{ label: "Действие", value: payload.method }];
 
   switch (payload.method) {
     case "eth_sendTransaction":
     case "eth_signTransaction":
       params = [
         ...params,
-        { label: "From", value: payload.params[0].from },
-        { label: "To", value: payload.params[0].to },
+        { label: "Отправитель", value: payload.params[0].from },
+        { label: "Получатель", value: payload.params[0].to },
         {
-          label: "Gas Limit",
+          label: "Лимит топлива",
           value: payload.params[0].gas
             ? convertHexToNumber(payload.params[0].gas)
             : payload.params[0].gasLimit
@@ -60,34 +60,34 @@ export function renderEthereumRequests(payload: any): IRequestRenderParams[] {
             : "",
         },
         {
-          label: "Gas Price",
+          label: "Цена топлива",
           value: convertHexToNumber(payload.params[0].gasPrice),
         },
         {
-          label: "Nonce",
+          label: "Номер",
           value: convertHexToNumber(payload.params[0].nonce),
         },
         {
-          label: "Value",
+          label: "Сумма перевода",
           value: payload.params[0].value ? convertHexToNumber(payload.params[0].value) : "",
         },
-        { label: "Data", value: payload.params[0].data },
+        { label: "Данные", value: payload.params[0].data },
       ];
       break;
 
     case "eth_sign":
       params = [
         ...params,
-        { label: "Address", value: payload.params[0] },
-        { label: "Message", value: payload.params[1] },
+        { label: "Адрес", value: payload.params[0] },
+        { label: "Сообщение", value: payload.params[1] },
       ];
       break;
     case "personal_sign":
       params = [
         ...params,
-        { label: "Address", value: payload.params[1] },
+        { label: "Адрес", value: payload.params[1] },
         {
-          label: "Message",
+          label: "Сообщение",
           value: convertHexToUtf8IfPossible(payload.params[0]),
         },
       ];
@@ -96,7 +96,7 @@ export function renderEthereumRequests(payload: any): IRequestRenderParams[] {
       params = [
         ...params,
         {
-          label: "params",
+          label: "Параметры",
           value: JSON.stringify(payload.params, null, "\t"),
         },
       ];

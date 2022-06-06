@@ -88,7 +88,7 @@ const Header = (props: IHeaderProps) => {
     <SHeader {...props}>
       {activeChain && (
         <SActiveChain>
-          <p>{`Connected to`}</p>
+          <p>{`Подключено к`}</p>
           <p>{activeChain}</p>
         </SActiveChain>
       )}
@@ -97,7 +97,7 @@ const Header = (props: IHeaderProps) => {
           <SBlockie address={address} />
           <SAddress connected={connected}>{ellipseAddress(address)}</SAddress>
           <SDisconnect connected={connected} onClick={killSession}>
-            {"Disconnect"}
+            {"Отключить"}
           </SDisconnect>
         </SActiveAccount>
       )}

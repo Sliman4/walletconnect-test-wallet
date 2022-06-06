@@ -48,7 +48,7 @@ class RequestDisplay extends React.Component<any, any> {
     console.log("RENDER", "formatted", params);
     return (
       <Column>
-        <h6>{"Request From"}</h6>
+        <h6>{"Запрос от"}</h6>
         <SConnectedPeer>
           <img src={peerMeta.icons[0]} alt={peerMeta.name} />
           <div>{peerMeta.name}</div>
@@ -60,8 +60,8 @@ class RequestDisplay extends React.Component<any, any> {
           </React.Fragment>
         ))}
         <SActions>
-          <Button onClick={approveRequest}>{`Approve`}</Button>
-          <Button onClick={rejectRequest}>{`Reject`}</Button>
+          <Button onClick={approveRequest}>{`Подтвердить`}</Button>
+          <Button onClick={rejectRequest}>{`Отклонить`}</Button>
         </SActions>
       </Column>
     );

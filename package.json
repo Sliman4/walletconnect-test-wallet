@@ -9,7 +9,7 @@
     "crypto"
   ],
   "author": "WalletConnect, Inc. <walletconnect.com>",
-  "homepage": "https://walletconnect.org",
+  "homepage": "https://diamondverse.github.io/walletconnect-test-wallet",
   "license": "MIT",
   "scripts": {
     "start": "react-scripts-ts start",
@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/walletconnect/walletconnect-test-wallet.git"
+    "url": "git+https://github.com/Diamondverse/walletconnect-test-wallet.git"
   },
   "bugs": {
-    "url": "https://github.com/walletconnect/walletconnect-test-wallet/issues"
+    "url": "https://github.com/Diamondverse/walletconnect-test-wallet/issues"
   },
   "dependencies": {
     "@walletconnect/client": "^1.7.1",
