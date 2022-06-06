@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Dropdown, { SRow } from "../components/Dropdown";
 import { IChainData } from "../helpers/types";
 import { ellipseAddress, getViewportDimensions } from "../helpers/utilities";
-import { responsive } from "../styles";
+import { colors, responsive } from "../styles";
 import Blockie from "./Blockie";
 import Button from "./Button";
 
@@ -29,6 +29,9 @@ const SAddressButton = styled(Button)`
   width: 90%;
   height: 40px;
   padding: 0;
+  background-color: rgb(${colors.white});
+  color: rgb(${colors.black});
+  font-family: monospace;
 `;
 
 interface IAccountDetailsProps {
