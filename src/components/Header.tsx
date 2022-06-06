@@ -42,7 +42,8 @@ const SActiveChain = styled(SActiveAccount as any)`
 `;
 
 const SGetCryptoButton = styled(Button)`
-  margin: 5px;
+  margin-right: 7px;
+  margin-left: 3px;
 `;
 
 interface IHeaderStyle {
@@ -102,10 +103,16 @@ const Header = (props: IHeaderProps) => {
   return (
     <SHeader {...props}>
       {activeChain && (
-        <SActiveChain>
-          <p>{`Подключено к`}</p>
-          <p>{activeChain.name}</p>
-        </SActiveChain>
+        <>
+          <SActiveChain>
+            <p>{`Подключено к`}</p>
+            <p>{activeChain.name}</p>
+          </SActiveChain>
+          <SGetCryptoButton onClick={getNativeCurrency}>
+            {`Получить ${activeChain.native_currency.symbol}`}
+          </SGetCryptoButton>
+          <SGetCryptoButton onClick={getCraft}>{`Получить CRAFT`}</SGetCryptoButton>
+        </>
       )}
       {address && (
         <SActiveAccount>
@@ -115,14 +122,6 @@ const Header = (props: IHeaderProps) => {
             {"Отключить"}
           </SDisconnect>
         </SActiveAccount>
-      )}
-      {activeChain && (
-        <>
-          <SGetCryptoButton onClick={getNativeCurrency}>
-            {`Получить ${activeChain.native_currency.symbol}`}
-          </SGetCryptoButton>
-          <SGetCryptoButton onClick={getCraft}>{`Получить CRAFT`}</SGetCryptoButton>
-        </>
       )}
     </SHeader>
   );

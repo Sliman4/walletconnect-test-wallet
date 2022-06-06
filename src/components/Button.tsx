@@ -31,6 +31,7 @@ const SHoverLayer = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
+  border-radius: 8px;
   background-color: rgb(${colors.white}, 0.1);
   top: 0;
   bottom: 0;
