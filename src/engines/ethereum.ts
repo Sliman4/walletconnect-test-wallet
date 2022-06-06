@@ -2,7 +2,7 @@ import { signingMethods, convertHexToNumber } from "@walletconnect/utils";
 
 import { IAppState } from "../App";
 import { apiGetCustomRequest } from "../helpers/api";
-import { convertHexToUtf8IfPossible } from "../helpers/utilities";
+import { convertHexToUtf8IfPossible, methodToName } from "../helpers/utilities";
 import { IRequestRenderParams, IRpcEngine } from "../helpers/types";
 import { getAppControllers } from "../controllers";
 
@@ -42,7 +42,7 @@ export async function routeEthereumRequests(payload: any, state: IAppState, setS
 }
 
 export function renderEthereumRequests(payload: any): IRequestRenderParams[] {
-  let params = [{ label: "Действие", value: payload.method }];
+  let params = [{ label: "Действие", value: methodToName(payload.method) }];
 
   switch (payload.method) {
     case "eth_sendTransaction":

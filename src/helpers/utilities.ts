@@ -212,6 +212,6 @@ export function methodToName(method: string): string {
     case "eth_signTypedData":
       return "Подписать";
     default:
-      return "Неизвестно";
+      return `Неизвестно (${method})`;
   }
 }
