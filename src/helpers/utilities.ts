@@ -111,10 +111,7 @@ export function getChainData(chainId: number): IChainData {
     throw new Error("ChainId missing or not supported");
   }
 
-  if (
-    chainData.rpc_url.includes("infura.io") &&
-    chainData.rpc_url.includes("%API_KEY%")
-  ) {
+  if (chainData.rpc_url.includes("infura.io") && chainData.rpc_url.includes("%API_KEY%")) {
     return {
       ...chainData,
       rpc_url: chainData.rpc_url,
