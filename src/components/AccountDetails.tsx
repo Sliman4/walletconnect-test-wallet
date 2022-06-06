@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Dropdown, { SRow } from "../components/Dropdown";
+import Dropdown from "../components/Dropdown";
 import { IChainData } from "../helpers/types";
 import { ellipseAddress, getViewportDimensions } from "../helpers/utilities";
 import { colors, responsive } from "../styles";
@@ -65,9 +65,9 @@ const AccountDetails = (props: IAccountDetailsProps) => {
         <SAddressDropdownWrapper>
           <SBlockie size={40} address={address} />
           <SAddressButton onClick={copyAddressToClipboard}>
-            <SRow>
+            <>
               <svg
-                style={{ float: "right", marginTop: "calc((16px - 24px) / 2)" }}
+                style={{ float: "right", marginRight: "10px" }}
                 stroke="currentColor"
                 fill="currentColor"
                 strokeWidth="0"
@@ -81,7 +81,7 @@ const AccountDetails = (props: IAccountDetailsProps) => {
                 />
               </svg>
               {accountsMap[activeIndex].display_address}
-            </SRow>
+            </>
           </SAddressButton>
         </SAddressDropdownWrapper>
       </SSection>
