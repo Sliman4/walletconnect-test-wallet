@@ -32,6 +32,7 @@ const SAddressButton = styled(Button)`
   background-color: rgb(${colors.white});
   color: rgb(${colors.black});
   font-family: monospace;
+  font-weight: normal;
 `;
 
 interface IAccountDetailsProps {
@@ -67,13 +68,17 @@ const AccountDetails = (props: IAccountDetailsProps) => {
           <SAddressButton onClick={copyAddressToClipboard}>
             <>
               <svg
-                style={{ float: "right", marginRight: "10px" }}
+                style={{
+                  float: "right",
+                  marginTop: "calc((16px - 20px) / 2)",
+                  marginRight: "10px",
+                }}
                 stroke="currentColor"
                 fill="currentColor"
                 strokeWidth="0"
                 viewBox="0 0 24 24"
-                height="24px"
-                width="24px"
+                height="20px"
+                width="20px"
               >
                 <path
                   d="M16,1 H4 c-1.1,0,-2,.9,-2,2 v14 h2 V3 h12 V1 z m3,4 H8 c-1.1,0,-2,.9,-2,2 v14
