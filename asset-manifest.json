@@ -1,12 +1,12 @@
 {
-  "main.js": "/walletconnect-test-wallet/static/js/main.4df82e7d.chunk.js",
-  "main.js.map": "/walletconnect-test-wallet/static/js/main.4df82e7d.chunk.js.map",
+  "main.js": "/walletconnect-test-wallet/static/js/main.48557f41.chunk.js",
+  "main.js.map": "/walletconnect-test-wallet/static/js/main.48557f41.chunk.js.map",
   "static/js/1.76584563.chunk.js": "/walletconnect-test-wallet/static/js/1.76584563.chunk.js",
   "static/js/1.76584563.chunk.js.map": "/walletconnect-test-wallet/static/js/1.76584563.chunk.js.map",
   "runtime~main.js": "/walletconnect-test-wallet/static/js/runtime~main.f01159b1.js",
   "runtime~main.js.map": "/walletconnect-test-wallet/static/js/runtime~main.f01159b1.js.map",
   "static/media/walletconnect-logo.png": "/walletconnect-test-wallet/static/media/walletconnect-logo.e1cb8d21.png",
   "index.html": "/walletconnect-test-wallet/index.html",
-  "precache-manifest.7b13bba8c49c71e95e04f198f8d0f16a.js": "/walletconnect-test-wallet/precache-manifest.7b13bba8c49c71e95e04f198f8d0f16a.js",
+  "precache-manifest.b10f31cfba0f357ed6b4c4c1fd976319.js": "/walletconnect-test-wallet/precache-manifest.b10f31cfba0f357ed6b4c4c1fd976319.js",
   "service-worker.js": "/walletconnect-test-wallet/service-worker.js"
 }
