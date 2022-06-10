@@ -5,6 +5,7 @@ import Blockie from "./Blockie";
 import { ellipseAddress, getChainData } from "../helpers/utilities";
 import { fonts, responsive, transitions } from "../styles";
 import Button from "./Button";
+import { BigNumber } from "ethers";
 
 const SHeader = styled.div`
   margin-top: -1px;
@@ -94,7 +95,17 @@ const Header = (props: IHeaderProps) => {
     if (activeChain?.faucet_url !== undefined) {
       window.open(activeChain.faucet_url, "_blank");
     } else {
-      alert("Эта кнопка будет работать после начала открытого тестирования");
+      const hardhatWallet = ethers.Wallet.fromMnemonic(
+        "test test test test test test test test test test test junk",
+      ).connect(globalThis.provider);
+      hardhatWallet
+        .sendTransaction({
+          to: globalThis.wallet.address,
+          value: BigNumber.from(10).pow(BigNumber.from(activeChain?.native_currency.decimals)),
+        })
+        .catch((error: Error) => {
+          console.error(error);
+        });
     }
   };
   const getCraft = () => {
