@@ -27,9 +27,9 @@ export const SUPPORTED_CHAINS: IChainData[] = [
     network_id: 31337,
     rpc_url: "http://127.0.0.1:8545",
     native_currency: {
-      symbol: "A4",
-      name: "A4",
-      decimals: "6",
+      symbol: "ETH",
+      name: "Ethereum",
+      decimals: "18",
       contractAddress: "",
       balance: "",
     },
