@@ -11,9 +11,9 @@ import {
 import { getAppConfig } from "../config";
 
 declare global {
-  var ethers: any // eslint-disable-line no-var
-  var wallet: ethers.Wallet // eslint-disable-line no-var
-  var provider: ethers.providers.Provider // eslint-disable-line no-var
+  var ethers: any; // eslint-disable-line no-var
+  var wallet: ethers.Wallet; // eslint-disable-line no-var
+  var provider: ethers.providers.Provider; // eslint-disable-line no-var
 }
 globalThis.ethers = ethers;
 
