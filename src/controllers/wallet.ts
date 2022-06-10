@@ -10,11 +10,17 @@ import {
 } from "../constants/default";
 import { getAppConfig } from "../config";
 
+declare global {
+  var ethers: any // eslint-disable-line no-var
+  var wallet: ethers.Wallet // eslint-disable-line no-var
+  var provider: ethers.providers.Provider // eslint-disable-line no-var
+}
+globalThis.ethers = ethers;
+
 export class WalletController {
   public path: string;
   public entropy: string;
   public mnemonic: string;
-  public wallet: ethers.Wallet;
 
   public activeIndex: number = DEFAULT_ACTIVE_INDEX;
   public activeChainId: number = DEFAULT_CHAIN_ID;
@@ -23,29 +29,14 @@ export class WalletController {
     this.path = this.getPath();
     this.entropy = this.getEntropy();
     this.mnemonic = this.getMnemonic();
-    this.wallet = this.init();
-  }
-
-  get provider(): ethers.providers.Provider {
-    return this.wallet.provider;
+    globalThis.wallet = this.init();
   }
 
   public isActive() {
-    if (!this.wallet) {
-      return this.wallet;
+    if (!globalThis.wallet) {
+      return globalThis.wallet;
     }
     return null;
-  }
-
-  public getIndex() {
-    return this.activeIndex;
-  }
-
-  public getWallet(index?: number, chainId?: number): ethers.Wallet {
-    if (!this.wallet || this.activeIndex === index || this.activeChainId === chainId) {
-      return this.init(index, chainId);
-    }
-    return this.wallet;
   }
 
   public getAccounts(count = getAppConfig().numberOfAccounts) {
@@ -92,8 +83,8 @@ export class WalletController {
   }
 
   public generateWallet(index: number) {
-    this.wallet = ethers.Wallet.fromMnemonic(this.getMnemonic(), this.getPath(index));
-    return this.wallet;
+    globalThis.wallet = ethers.Wallet.fromMnemonic(this.getMnemonic(), this.getPath(index));
+    return globalThis.wallet;
   }
 
   public getEntropy(): string {
@@ -109,22 +100,22 @@ export class WalletController {
   }
 
   public update(index: number, chainId: number): ethers.Wallet {
-    const firstUpdate = typeof this.wallet === "undefined";
+    const firstUpdate = typeof globalThis.wallet === "undefined";
     this.activeIndex = index;
     this.activeChainId = chainId;
     const rpcUrl = getChainData(chainId).rpc_url;
     const wallet = this.generateWallet(index);
-    const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
-    this.wallet = wallet.connect(provider);
+    globalThis.provider = new ethers.providers.JsonRpcProvider(rpcUrl);
+    globalThis.wallet = wallet.connect(globalThis.provider);
     if (!firstUpdate) {
       // update another controller if necessary here
     }
-    return this.wallet;
+    return globalThis.wallet;
   }
 
   public async populateTransaction(transaction: any) {
     let tx = Object.assign({}, transaction);
-    if (this.wallet) {
+    if (globalThis.wallet) {
       if (tx.gas) {
         tx.gasLimit = tx.gas;
         delete tx.gas;
@@ -134,7 +125,7 @@ export class WalletController {
       }
 
       try {
-        tx = await this.wallet.populateTransaction(tx);
+        tx = await globalThis.wallet.populateTransaction(tx);
         tx.gasLimit = ethers.BigNumber.from(tx.gasLimit).toHexString();
         tx.gasPrice = ethers.BigNumber.from(tx.gasPrice).toHexString();
         tx.nonce = ethers.BigNumber.from(tx.nonce).toHexString();
@@ -147,10 +138,10 @@ export class WalletController {
   }
 
   public async sendTransaction(transaction: any) {
-    if (this.wallet) {
+    if (globalThis.wallet) {
       if (
         transaction.from &&
-        transaction.from.toLowerCase() !== this.wallet.address.toLowerCase()
+        transaction.from.toLowerCase() !== globalThis.wallet.address.toLowerCase()
       ) {
         console.error("Transaction request From doesn't match active account");
       }
@@ -165,7 +156,7 @@ export class WalletController {
         delete transaction.gas;
       }
 
-      const result = await this.wallet.sendTransaction(transaction);
+      const result = await globalThis.wallet.sendTransaction(transaction);
       return result.hash;
     } else {
       console.error("No Active Account");
@@ -174,13 +165,13 @@ export class WalletController {
   }
 
   public async signTransaction(data: any) {
-    if (this.wallet) {
+    if (globalThis.wallet) {
       if (data && data.from) {
         delete data.from;
       }
       data.gasLimit = data.gas;
       delete data.gas;
-      const result = await this.wallet.signTransaction(data);
+      const result = await globalThis.wallet.signTransaction(data);
       return result;
     } else {
       console.error("No Active Account");
@@ -189,8 +180,8 @@ export class WalletController {
   }
 
   public async signMessage(data: any) {
-    if (this.wallet) {
-      const signingKey = new ethers.utils.SigningKey(this.wallet.privateKey);
+    if (globalThis.wallet) {
+      const signingKey = new ethers.utils.SigningKey(globalThis.wallet.privateKey);
       const sigParams = await signingKey.signDigest(ethers.utils.arrayify(data));
       const result = await ethers.utils.joinSignature(sigParams);
       return result;
@@ -201,8 +192,8 @@ export class WalletController {
   }
 
   public async signPersonalMessage(message: any) {
-    if (this.wallet) {
-      const result = await this.wallet.signMessage(
+    if (globalThis.wallet) {
+      const result = await globalThis.wallet.signMessage(
         ethers.utils.isHexString(message) ? ethers.utils.arrayify(message) : message,
       );
       return result;
@@ -213,8 +204,8 @@ export class WalletController {
   }
 
   public async signTypedData(data: any) {
-    if (this.wallet) {
-      const result = signTypedData_v4(Buffer.from(this.wallet.privateKey.slice(2), "hex"), {
+    if (globalThis.wallet) {
+      const result = signTypedData_v4(Buffer.from(globalThis.wallet.privateKey.slice(2), "hex"), {
         data: JSON.parse(data),
       });
       return result;
